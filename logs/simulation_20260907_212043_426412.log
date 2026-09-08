@@ -1,0 +1,23 @@
+[2026-09-07 21:20:43] PROCESS_CREATED: Proceso 1 (ProcesoA) cargado.
+[2026-09-07 21:20:43] PROCESS_CREATED: Proceso 2 (ProcesoB) cargado.
+[2026-09-07 21:20:43] SIMULATION_START: Escenario cargado: Interbloqueo circular entre dos procesos
+[2026-09-07 21:20:43] MEMORY_ALLOCATED: PID 1 recibió 200 unidades de memoria.
+[2026-09-07 21:20:43] MEMORY_ALLOCATED: PID 2 recibió 200 unidades de memoria.
+[2026-09-07 21:20:43] RESOURCE_ALLOCATED: Recurso 'printer' asignado al PID 1.
+[2026-09-07 21:20:43] RESOURCE_ALLOCATED: Recurso 'disk' asignado al PID 2.
+[2026-09-07 21:20:43] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:43] RESOURCE_WAIT: PID 2 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:43] DEADLOCK_DETECTED: Interbloqueo detectado. Procesos: [1, 2]. Recursos: ['disk', 'printer']. Condiciones presentes: exclusion_mutua, espera_y_retencion, no_expropiacion, espera_circular.
+[2026-09-07 21:20:43] CONDITION_ANALYSIS: [exclusion_mutua] Los recursos involucrados (disk, printer) están completamente ocupados: ningún otro proceso puede tomarlos mientras su(s) propietario(s) los retienen.
+[2026-09-07 21:20:43] CONDITION_ANALYSIS: [espera_y_retencion] Al menos un proceso del ciclo (1, 2) conserva recursos asignados mientras solicita un recurso adicional.
+[2026-09-07 21:20:43] CONDITION_ANALYSIS: [no_expropiacion] El simulador no retira recursos a un proceso de forma forzada durante la ejecución normal; solo se liberan cuando el proceso termina por sí mismo o cuando se aplica la estrategia de recuperación.
+[2026-09-07 21:20:43] CONDITION_ANALYSIS: [espera_circular] Se encontró una cadena cerrada en el grafo de asignación/espera: P1(ProcesoA) -> disk(Disco) -> P2(ProcesoB) -> printer(Impresora) -> P1(ProcesoA)
+[2026-09-07 21:20:43] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:43] RESOURCE_WAIT: PID 2 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:43] DEADLOCK_RECOVERY: Estrategia de recuperación aplicada: terminación forzada de PID 2. PID 2 fue seleccionado por retener la menor cantidad de recursos (1) entre los procesos en interbloqueo [1, 2]. Recursos liberados: ['disk'].
+[2026-09-07 21:20:43] RESOURCE_ALLOCATED: Recurso 'disk' asignado al PID 1.
+[2026-09-07 21:20:43] RESOURCE_RELEASED: PID 1 liberó el recurso 'disk'.
+[2026-09-07 21:20:43] RESOURCE_RELEASED: PID 1 liberó el recurso 'printer'.
+[2026-09-07 21:20:43] MEMORY_RELEASED: PID 1 liberó memoria.
+[2026-09-07 21:20:43] PROCESS_TERMINATED: PID 1 terminó y liberó sus recursos.
+[2026-09-07 21:20:43] SIMULATION_END: La simulación ha terminado.

@@ -1,0 +1,18 @@
+[2026-09-07 21:20:42] PROCESS_CREATED: Proceso 1 (Compilador) cargado.
+[2026-09-07 21:20:42] PROCESS_CREATED: Proceso 2 (ImpresionReportes) cargado.
+[2026-09-07 21:20:42] SIMULATION_START: Escenario cargado: Espera temporal sin interbloqueo
+[2026-09-07 21:20:42] MEMORY_ALLOCATED: PID 1 recibió 300 unidades de memoria.
+[2026-09-07 21:20:42] MEMORY_ALLOCATED: PID 2 recibió 200 unidades de memoria.
+[2026-09-07 21:20:42] RESOURCE_ALLOCATED: Recurso 'printer' asignado al PID 1.
+[2026-09-07 21:20:42] RESOURCE_WAIT: PID 2 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:42] FILE_WRITE: PID 1 escribió el archivo 'log_compilacion'.
+[2026-09-07 21:20:42] RESOURCE_WAIT: PID 2 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:42] RESOURCE_RELEASED: PID 1 liberó el recurso 'printer'.
+[2026-09-07 21:20:42] RESOURCE_ALLOCATED: Recurso 'printer' asignado al PID 2.
+[2026-09-07 21:20:42] MEMORY_RELEASED: PID 1 liberó memoria.
+[2026-09-07 21:20:42] FILE_READ: PID 2 leyó el archivo 'log_compilacion'.
+[2026-09-07 21:20:42] PROCESS_TERMINATED: PID 1 terminó y liberó sus recursos.
+[2026-09-07 21:20:42] RESOURCE_RELEASED: PID 2 liberó el recurso 'printer'.
+[2026-09-07 21:20:42] MEMORY_RELEASED: PID 2 liberó memoria.
+[2026-09-07 21:20:42] PROCESS_TERMINATED: PID 2 terminó y liberó sus recursos.
+[2026-09-07 21:20:42] SIMULATION_END: La simulación ha terminado.

@@ -1,0 +1,81 @@
+{
+  "scenario": {
+    "id": "escenario_4",
+    "name": "Prevención y recuperación de interbloqueo",
+    "description": "Escaneo y Respaldo entran en interbloqueo por el escáner y la unidad USB en orden cruzado. Un tercer proceso (Monitor) no participa en el ciclo y debe completarse sin verse afectado, demostrando que la estrategia de recuperación por terminación forzada resuelve el interbloqueo sin detener al resto del sistema."
+  },
+
+  "system": {
+    "memory_total": 1000
+  },
+
+  "resources": [
+    {
+      "id": "scanner",
+      "name": "Escáner",
+      "type": "exclusive",
+      "quantity": 1
+    },
+    {
+      "id": "usb_drive",
+      "name": "Unidad USB",
+      "type": "exclusive",
+      "quantity": 1
+    }
+  ],
+
+  "files": [
+    {
+      "id": "status_log",
+      "name": "status.log",
+      "size": 0
+    }
+  ],
+
+  "processes": [
+    {
+      "pid": 1,
+      "name": "Escaneo",
+      "memory_required": 150,
+      "required_resources": ["scanner", "usb_drive"],
+      "actions": [
+        { "id": "p1_a1", "type": "request_memory", "amount": 150 },
+        { "id": "p1_a2", "type": "request_resource", "resource": "scanner" },
+        { "id": "p1_a3", "type": "request_resource", "resource": "usb_drive" },
+        { "id": "p1_a4", "type": "release_resource", "resource": "usb_drive" },
+        { "id": "p1_a5", "type": "release_resource", "resource": "scanner" },
+        { "id": "p1_a6", "type": "release_memory" },
+        { "id": "p1_a7", "type": "terminate" }
+      ]
+    },
+
+    {
+      "pid": 2,
+      "name": "Respaldo",
+      "memory_required": 150,
+      "required_resources": ["usb_drive", "scanner"],
+      "actions": [
+        { "id": "p2_a1", "type": "request_memory", "amount": 150 },
+        { "id": "p2_a2", "type": "request_resource", "resource": "usb_drive" },
+        { "id": "p2_a3", "type": "request_resource", "resource": "scanner" },
+        { "id": "p2_a4", "type": "release_resource", "resource": "scanner" },
+        { "id": "p2_a5", "type": "release_resource", "resource": "usb_drive" },
+        { "id": "p2_a6", "type": "release_memory" },
+        { "id": "p2_a7", "type": "terminate" }
+      ]
+    },
+
+    {
+      "pid": 3,
+      "name": "Monitor",
+      "memory_required": 100,
+      "required_resources": [],
+      "actions": [
+        { "id": "p3_a1", "type": "request_memory", "amount": 100 },
+        { "id": "p3_a2", "type": "write_file", "file": "status_log", "new_size": 20 },
+        { "id": "p3_a3", "type": "release_memory" },
+        { "id": "p3_a4", "type": "terminate" }
+      ]
+    }
+  ]
+}

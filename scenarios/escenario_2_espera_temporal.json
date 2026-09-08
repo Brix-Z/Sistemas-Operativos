@@ -1,0 +1,60 @@
+{
+  "scenario": {
+    "id": "escenario_2",
+    "name": "Espera temporal sin interbloqueo",
+    "description": "P2 debe esperar a que P1 libere la impresora. No hay espera circular: en cuanto P1 termina de usarla, P2 puede continuar y ambos procesos finalizan correctamente."
+  },
+
+  "system": {
+    "memory_total": 800
+  },
+
+  "resources": [
+    {
+      "id": "printer",
+      "name": "Impresora",
+      "type": "exclusive",
+      "quantity": 1
+    }
+  ],
+
+  "files": [
+    {
+      "id": "log_compilacion",
+      "name": "compilacion.log",
+      "size": 0
+    }
+  ],
+
+  "processes": [
+    {
+      "pid": 1,
+      "name": "Compilador",
+      "memory_required": 300,
+      "required_resources": ["printer"],
+      "actions": [
+        { "id": "p1_a1", "type": "request_memory", "amount": 300 },
+        { "id": "p1_a2", "type": "request_resource", "resource": "printer" },
+        { "id": "p1_a3", "type": "write_file", "file": "log_compilacion", "new_size": 40 },
+        { "id": "p1_a4", "type": "release_resource", "resource": "printer" },
+        { "id": "p1_a5", "type": "release_memory" },
+        { "id": "p1_a6", "type": "terminate" }
+      ]
+    },
+
+    {
+      "pid": 2,
+      "name": "ImpresionReportes",
+      "memory_required": 200,
+      "required_resources": ["printer"],
+      "actions": [
+        { "id": "p2_a1", "type": "request_memory", "amount": 200 },
+        { "id": "p2_a2", "type": "request_resource", "resource": "printer" },
+        { "id": "p2_a3", "type": "read_file", "file": "log_compilacion" },
+        { "id": "p2_a4", "type": "release_resource", "resource": "printer" },
+        { "id": "p2_a5", "type": "release_memory" },
+        { "id": "p2_a6", "type": "terminate" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "scenario": {
+    "id": "escenario_3",
+    "name": "Interbloqueo circular entre dos procesos",
+    "description": "P1 posee la impresora y solicita el disco; P2 posee el disco y solicita la impresora. Se produce espera circular y el detector debe identificarla automáticamente."
+  },
+
+  "system": {
+    "memory_total": 1000
+  },
+
+  "resources": [
+    {
+      "id": "printer",
+      "name": "Impresora",
+      "type": "exclusive",
+      "quantity": 1
+    },
+    {
+      "id": "disk",
+      "name": "Disco",
+      "type": "exclusive",
+      "quantity": 1
+    }
+  ],
+
+  "files": [],
+
+  "processes": [
+    {
+      "pid": 1,
+      "name": "ProcesoA",
+      "memory_required": 200,
+      "required_resources": ["printer", "disk"],
+      "actions": [
+        { "id": "p1_a1", "type": "request_memory", "amount": 200 },
+        { "id": "p1_a2", "type": "request_resource", "resource": "printer" },
+        { "id": "p1_a3", "type": "request_resource", "resource": "disk" },
+        { "id": "p1_a4", "type": "release_resource", "resource": "disk" },
+        { "id": "p1_a5", "type": "release_resource", "resource": "printer" },
+        { "id": "p1_a6", "type": "release_memory" },
+        { "id": "p1_a7", "type": "terminate" }
+      ]
+    },
+
+    {
+      "pid": 2,
+      "name": "ProcesoB",
+      "memory_required": 200,
+      "required_resources": ["disk", "printer"],
+      "actions": [
+        { "id": "p2_a1", "type": "request_memory", "amount": 200 },
+        { "id": "p2_a2", "type": "request_resource", "resource": "disk" },
+        { "id": "p2_a3", "type": "request_resource", "resource": "printer" },
+        { "id": "p2_a4", "type": "release_resource", "resource": "printer" },
+        { "id": "p2_a5", "type": "release_resource", "resource": "disk" },
+        { "id": "p2_a6", "type": "release_memory" },
+        { "id": "p2_a7", "type": "terminate" }
+      ]
+    }
+  ]
+}

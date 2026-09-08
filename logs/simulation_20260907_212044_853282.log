@@ -1,0 +1,66 @@
+[2026-09-07 21:20:44] PROCESS_CREATED: Proceso 1 (Analista) cargado.
+[2026-09-07 21:20:44] PROCESS_CREATED: Proceso 2 (Disenador) cargado.
+[2026-09-07 21:20:44] PROCESS_CREATED: Proceso 3 (Editor) cargado.
+[2026-09-07 21:20:44] PROCESS_CREATED: Proceso 4 (Monitor_Red) cargado.
+[2026-09-07 21:20:44] PROCESS_CREATED: Proceso 5 (Respaldo_Nocturno) cargado.
+[2026-09-07 21:20:44] SIMULATION_START: Escenario cargado: Escenario amplio con interbloqueo de tres vías
+[2026-09-07 21:20:44] MEMORY_ALLOCATED: PID 1 recibió 300 unidades de memoria.
+[2026-09-07 21:20:44] MEMORY_ALLOCATED: PID 2 recibió 300 unidades de memoria.
+[2026-09-07 21:20:44] MEMORY_ALLOCATED: PID 3 recibió 300 unidades de memoria.
+[2026-09-07 21:20:44] MEMORY_ALLOCATED: PID 4 recibió 150 unidades de memoria.
+[2026-09-07 21:20:44] MEMORY_ALLOCATED: PID 5 recibió 200 unidades de memoria.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'printer' asignado al PID 1.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'disk' asignado al PID 2.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'scanner' asignado al PID 3.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'network' asignado al PID 4.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'network' asignado al PID 5.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] FILE_READ: PID 4 leyó el archivo 'config_cfg'.
+[2026-09-07 21:20:44] FILE_WRITE: PID 5 escribió el archivo 'respaldo_bin'.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 4 liberó el recurso 'network'.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 5 liberó el recurso 'network'.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] MEMORY_RELEASED: PID 4 liberó memoria.
+[2026-09-07 21:20:44] MEMORY_RELEASED: PID 5 liberó memoria.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] PROCESS_TERMINATED: PID 4 terminó y liberó sus recursos.
+[2026-09-07 21:20:44] PROCESS_TERMINATED: PID 5 terminó y liberó sus recursos.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] DEADLOCK_DETECTED: Interbloqueo detectado. Procesos: [1, 2, 3]. Recursos: ['disk', 'printer', 'scanner']. Condiciones presentes: exclusion_mutua, espera_y_retencion, no_expropiacion, espera_circular.
+[2026-09-07 21:20:44] CONDITION_ANALYSIS: [exclusion_mutua] Los recursos involucrados (disk, printer, scanner) están completamente ocupados: ningún otro proceso puede tomarlos mientras su(s) propietario(s) los retienen.
+[2026-09-07 21:20:44] CONDITION_ANALYSIS: [espera_y_retencion] Al menos un proceso del ciclo (1, 2, 3) conserva recursos asignados mientras solicita un recurso adicional.
+[2026-09-07 21:20:44] CONDITION_ANALYSIS: [no_expropiacion] El simulador no retira recursos a un proceso de forma forzada durante la ejecución normal; solo se liberan cuando el proceso termina por sí mismo o cuando se aplica la estrategia de recuperación.
+[2026-09-07 21:20:44] CONDITION_ANALYSIS: [espera_circular] Se encontró una cadena cerrada en el grafo de asignación/espera: disk(Disco) -> P2(Disenador) -> scanner(Escáner) -> P3(Editor) -> printer(Impresora) -> P1(Analista) -> disk(Disco)
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 2 espera el recurso 'scanner'. Propietario actual: 3.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 3 espera el recurso 'printer'. Propietario actual: 1.
+[2026-09-07 21:20:44] DEADLOCK_RECOVERY: Estrategia de recuperación aplicada: terminación forzada de PID 3. PID 3 fue seleccionado por retener la menor cantidad de recursos (1) entre los procesos en interbloqueo [1, 2, 3]. Recursos liberados: ['scanner'].
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'scanner' asignado al PID 2.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] FILE_WRITE: PID 2 escribió el archivo 'respaldo_bin'.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 2 liberó el recurso 'scanner'.
+[2026-09-07 21:20:44] RESOURCE_WAIT: PID 1 espera el recurso 'disk'. Propietario actual: 2.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 2 liberó el recurso 'disk'.
+[2026-09-07 21:20:44] PROCESS_READY: PID 1 puede volver a intentar acceder a 'disk'.
+[2026-09-07 21:20:44] RESOURCE_ALLOCATED: Recurso 'disk' asignado al PID 1.
+[2026-09-07 21:20:44] MEMORY_RELEASED: PID 2 liberó memoria.
+[2026-09-07 21:20:44] FILE_WRITE: PID 1 escribió el archivo 'reporte_final'.
+[2026-09-07 21:20:44] PROCESS_TERMINATED: PID 2 terminó y liberó sus recursos.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 1 liberó el recurso 'disk'.
+[2026-09-07 21:20:44] RESOURCE_RELEASED: PID 1 liberó el recurso 'printer'.
+[2026-09-07 21:20:44] MEMORY_RELEASED: PID 1 liberó memoria.
+[2026-09-07 21:20:44] PROCESS_TERMINATED: PID 1 terminó y liberó sus recursos.
+[2026-09-07 21:20:44] SIMULATION_END: La simulación ha terminado.
