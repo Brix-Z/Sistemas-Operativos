@@ -19,19 +19,12 @@ class DeadlockRecovery:
     """
     Estrategia de recuperación por terminación forzada (preemption).
 
-    Cuando se confirma un interbloqueo, el sistema selecciona una
-    "víctima" entre los procesos involucrados en el ciclo y le retira
-    sus recursos y memoria de forma forzada, terminándola. Esto rompe
-    deliberadamente la condición de "no expropiación": el sistema toma
-    recursos de un proceso sin su cooperación para permitir que el
-    resto de los procesos puedan continuar.
-
-    Selección de la víctima: se elige el proceso que retiene la menor
-    cantidad de recursos entre los involucrados en el ciclo, para
-    minimizar el trabajo perdido. En caso de empate se elige el PID
-    más alto (el proceso que ingresó más recientemente al sistema).
-    La regla no depende de nombres ni PIDs fijos: se recalcula sobre
-    los procesos reales que forman el ciclo detectado.
+    Se elige el proceso que retiene la menor cantidad de recursos entre 
+    los involucrados en el ciclo, para minimizar el trabajo perdido. 
+    En caso de empate se elige el PID más alto (el proceso que ingresó
+    más recientemente al sistema). La regla no depende de nombres ni 
+    PIDs fijos: se recalcula sobre los procesos reales que forman el 
+    ciclo detectado.
     """
 
     def __init__(
