@@ -30,13 +30,6 @@ class SystemSnapshot:
 
 
 class SystemMonitor:
-    """
-    Envoltorio delgado sobre psutil para obtener una fotografía breve
-    del sistema operativo real (requerimiento 4.10). Esta sección es
-    informativa y deliberadamente independiente del Simulator: no
-    participa en la lógica de administración de recursos simulados ni
-    en la detección de interbloqueos.
-    """
 
     def __init__(self, disk_path: Optional[str] = None):
         self.disk_path = disk_path or os.path.abspath(os.sep)
