@@ -240,10 +240,6 @@ class ScenarioLoader:
 
         action_ids = set()
 
-        # Copia local: un 'create_file' dentro de la secuencia de
-        # acciones habilita referencias posteriores a ese mismo
-        # archivo (leer/escribir/mover/eliminar), aunque no haya sido
-        # declarado en la sección "files" del escenario.
         known_file_ids = set(file_ids)
 
         for action in actions:
