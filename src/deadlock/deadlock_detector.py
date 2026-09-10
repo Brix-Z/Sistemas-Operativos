@@ -34,22 +34,10 @@ class DeadlockDetector:
     Detecta interbloqueos construyendo el grafo de asignación/espera
     a partir del estado real de ProcessManager y ResourceManager.
 
-    Nodos:
-      - "P:<pid>"         un proceso
-      - "R:<resource_id>" un recurso
-
-    Aristas:
-      - R -> P  el recurso está asignado a ese proceso (asignación)
-      - P -> R  el proceso está esperando ese recurso (solicitud)
-
     Un ciclo en este grafo equivale a una espera circular. Como todos
     los recursos del simulador se modelan como unidades discretas con
     un único propietario por unidad, un ciclo es condición necesaria y
     suficiente de interbloqueo.
-
-    No se usan nombres fijos: el grafo se construye dinámicamente desde
-    los datos del escenario cargado, por lo que funciona con cualquier
-    combinación de procesos y recursos.
     """
 
     def __init__(
