@@ -7,14 +7,8 @@ import psutil
 
 @dataclass
 class SystemSnapshot:
-    """
-    Datos REALES de la máquina donde corre el simulador, obtenidos con
-    psutil. Esto es distinto de los recursos SIMULADOS (memoria,
-    archivos, impresora, disco, etc.) que administra la lógica propia
-    del proyecto: esos son ficticios y solo existen dentro del
-    escenario cargado. Esta clase, en cambio, describe el hardware
-    real (o la máquina virtual) que ejecuta el programa.
-    """
+   
+    """ Datos REALES de la máquina donde corre el simulador, obtenidos con psutil. """
 
     cpu_percent: float
     cpu_count: int
