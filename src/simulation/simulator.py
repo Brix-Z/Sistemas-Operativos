@@ -171,18 +171,7 @@ class Simulator:
         return executed_something
 
     def run(self, max_steps: int = 1000) -> None:
-        """
-        Ejecución automática: corre el escenario completo hasta el
-        final. Cuando encuentra un interbloqueo lo detecta, lo
-        registra (con el análisis de las cuatro condiciones) y de
-        inmediato aplica la estrategia de recuperación para que la
-        simulación pueda continuar sin intervención del usuario.
 
-        En el modo paso a paso (ver `step`), la detección y la
-        recuperación quedan separadas: `step` solo detecta y marca
-        los procesos como BLOCKED, y es la interfaz quien decide
-        cuándo invocar `resolve_pending_deadlocks`.
-        """
         count = 0
 
         while not self.finished and count < max_steps:
@@ -656,22 +645,7 @@ class Simulator:
         )
 
     def _handle_stall(self) -> bool:
-        """
-        Se invoca cuando ningún proceso pudo avanzar en el ciclo
-        actual. Consulta al DeadlockDetector y, para cada interbloqueo
-        que no se haya registrado todavía, lo marca (procesos ->
-        BLOCKED) y registra el análisis de las cuatro condiciones en
-        el log. NO aplica la estrategia de recuperación: eso queda
-        como una acción explícita (`resolve_pending_deadlocks`) para
-        que el modo paso a paso pueda mostrar la detección y la
-        visualización del ciclo antes de resolverlo.
 
-        Retorna True si se detectó al menos un interbloqueo NUEVO
-        (cuenta como el "evento" de este paso) y False si no hay nada
-        nuevo que reportar (incluye el caso de un estancamiento que no
-        corresponde a un interbloqueo, p. ej. espera de memoria que
-        nunca se liberará).
-        """
         reports = self.deadlock_detector.detect_all()
 
         if not reports:
