@@ -28,9 +28,7 @@ Se abre un menú interactivo por consola (CLI) con las siguientes
 opciones:
 
 1. **Cargar escenario** — lista los archivos `.json` en `scenarios/`
-   o permite escribir manualmente la ruta de cualquier otro archivo
-   (por ejemplo, el escenario sorpresa que aporte la docente durante
-   la defensa).
+   o permite escribir manualmente la ruta de cualquier otro archivo.
 2. **Ejecutar en modo automático** — corre el escenario completo y
    muestra el resultado final y las métricas. Si se produce un
    interbloqueo, se detecta y se resuelve automáticamente para que la
@@ -132,8 +130,7 @@ normalidad.
 
 Cada escenario es un JSON independiente en `scenarios/` y se carga
 sin modificar el código fuente (opción 1 del menú, incluyendo la
-posibilidad de escribir manualmente la ruta de un escenario externo,
-como el escenario sorpresa de la defensa).
+posibilidad de escribir manualmente la ruta de un escenario externo).
 
 ## Logs
 

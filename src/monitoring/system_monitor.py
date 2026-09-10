@@ -7,14 +7,8 @@ import psutil
 
 @dataclass
 class SystemSnapshot:
-    """
-    Datos REALES de la máquina donde corre el simulador, obtenidos con
-    psutil. Esto es distinto de los recursos SIMULADOS (memoria,
-    archivos, impresora, disco, etc.) que administra la lógica propia
-    del proyecto: esos son ficticios y solo existen dentro del
-    escenario cargado. Esta clase, en cambio, describe el hardware
-    real (o la máquina virtual) que ejecuta el programa.
-    """
+   
+    """ Datos REALES de la máquina donde corre el simulador, obtenidos con psutil. """
 
     cpu_percent: float
     cpu_count: int
@@ -36,13 +30,6 @@ class SystemSnapshot:
 
 
 class SystemMonitor:
-    """
-    Envoltorio delgado sobre psutil para obtener una fotografía breve
-    del sistema operativo real (requerimiento 4.10). Esta sección es
-    informativa y deliberadamente independiente del Simulator: no
-    participa en la lógica de administración de recursos simulados ni
-    en la detección de interbloqueos.
-    """
 
     def __init__(self, disk_path: Optional[str] = None):
         self.disk_path = disk_path or os.path.abspath(os.sep)

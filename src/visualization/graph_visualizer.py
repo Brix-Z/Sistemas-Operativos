@@ -25,16 +25,6 @@ class GraphVisualizer:
     Genera una representación visual del grafo de asignación/espera
     de recursos a partir de los datos reales del escenario en
     ejecución (no datos de ejemplo ni codificados a mano).
-
-    Convenciones visuales:
-      - Procesos: nodos circulares azules.
-      - Recursos libres: nodos cuadrados verdes.
-      - Recursos ocupados: nodos cuadrados naranjas.
-      - Asignación (recurso -> proceso): flecha negra continua.
-      - Solicitud (proceso -> recurso): flecha gris.
-      - Si se detectó un interbloqueo, los nodos y aristas que forman
-        el ciclo se resaltan en rojo para que se reconozca a simple
-        vista.
     """
 
     def __init__(
