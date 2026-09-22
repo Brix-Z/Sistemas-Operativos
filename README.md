@@ -8,7 +8,7 @@ grafo de asignación/espera y una estrategia propia de recuperación.
 
 ## Instalación
 
-Requiere Python 3.10 o superior.
+Requiere Python 3.10 o superior
 
 ```bash
 pip install -r requirements.txt
